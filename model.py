@@ -13,11 +13,16 @@ def create_model(input_shape):
     model.add(layers.MaxPooling2D(2, 2))
 
     # Layer 3
-    model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+    model.add(layers.Conv2D(128, (3, 3), activation='relu'))
 
-    # Flatten and Dense layers
+    # Flatten the output from the convolutional layers
     model.add(layers.Flatten())
-    model.add(layers.Dense(64, activation='relu'))
+
+    # Dense layer with Dropout for regularization
+    model.add(layers.Dense(128, activation='relu'))
+    model.add(layers.Dropout(0.25))
+
+    # Output layer for 10 classes
     model.add(layers.Dense(10, activation='softmax'))
 
     return model
