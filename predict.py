@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 
 # Load the test data
-(train_images, train_labels), (test_images, test_labels) = load_data()
+(train_images, train_labels), (val_images, val_labels), (test_images, test_labels) = load_data()
 
 # Class names
 class_names = ["T-shirt/top", "Trouser", "Pullover", "Dress", "Coat", 

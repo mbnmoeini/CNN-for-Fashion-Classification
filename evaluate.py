@@ -2,7 +2,7 @@ import tensorflow as tf
 from data_loader import load_data
 
 def evaluate_model(model):
-    (train_images, train_labels), (test_images, test_labels) = load_data()
+    (train_images, train_labels), (val_images, val_labels), (test_images, test_labels) = load_data()
     
     test_loss, test_accuracy = model.evaluate(test_images, test_labels)
     

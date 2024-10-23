@@ -7,7 +7,8 @@ from keras.optimizers import Adam
 
 def train_model(epochs=50,  batch_size=64, log_dir="logs"):
 
-    (train_images, train_labels), (test_images, test_labels) = load_data()
+    # Load the data
+    (train_images, train_labels), (val_images, val_labels), (test_images, test_labels) = load_data()
 
 
     # Create the model
@@ -29,8 +30,8 @@ def train_model(epochs=50,  batch_size=64, log_dir="logs"):
 
     # Train the model
     history = model.fit(train_images, train_labels, epochs=epochs,
-                         validation_data=(test_images, test_labels),
-                          batch_size=64,
+                         validation_data=(val_images, val_labels),
+                          batch_size=batch_size,
                            callbacks=[tensorboard_callback, early_stopping, lr_reduction])
     
     # Save our trained model
